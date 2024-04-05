@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Form - My Recruitment Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        }
+        .job-spec {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-left: 5px solid #007bff;
+        }
+        .job-spec h4 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body class="container mt-5">
+    <h2>Application Form - My Recruitment Board</h2>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    <form method="post">
+        <div class="form-group">
+            <label for="full_name">Full Name:</label>
+            <input type="text" class="form-control" id="full_name" name="full_name" value="{{ application.full_name if application else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email_address">Email Address:</label>
+            <input type="email" class="form-control" id="email_address" name="email_address" value="{{ application.email_address if application else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone_number" name="phone_number" value="{{ application.phone_number if application else '' }}" required>
+        </div>
+        <div class="form-group">
+            <label for="cv_text">CV Summary (max 2000 characters):</label>
+            <textarea class="form-control" id="cv_text" name="cv_text" rows="5" required>{{ application.cv_text if application else '' }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

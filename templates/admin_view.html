@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard - My Recruitment Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Admin Dashboard - My Recruitment Board</h2>
+    <p>Welcome, Admin! <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a></p>
+    <p>This is the top application to follow up with:</p>
+    <div class="alert alert-light">{{ summaries|safe }}</div>
+</body>
+</html>

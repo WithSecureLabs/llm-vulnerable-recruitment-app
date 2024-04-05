@@ -1,0 +1,5 @@
+env/
+.env
+recruitment_demo.db
+*.pyc
+__pycache__

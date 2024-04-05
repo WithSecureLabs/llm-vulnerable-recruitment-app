@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard - My Recruitment Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .job-spec {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body class="container mt-5">
+    <h2>Candidate Dashboard - My Recruitment Board</h2>
+    <p>Welcome, {{ session.username }}! <a href="{{ url_for('logout') }}" class="btn btn-secondary">Logout</a></p>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-info">
+        {% for message in messages %}
+        <div>{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="job-spec">
+        <h4>Job Specification for Prompt Engineer</h4>
+        <p>We are seeking a talented and creative Prompt Engineer to join our team. The ideal candidate will have a
+            knack for designing engaging and effective prompts that drive meaningful interactions with AI models.</p>
+        <ul>
+            <li>Strong skills in natural language processing and understanding.</li>
+            <li>Experience in designing prompts for AI or chatbot applications.</li>
+            <li>Ability to work collaboratively with cross-functional teams to refine AI outputs.</li>
+        </ul>
+    </div>
+
+    {% if application %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Your Application</h5>
+            <p class="card-text"><strong>Full Name:</strong> {{ application.full_name }}</p>
+            <p class="card-text"><strong>CV Text:</strong> {{ application.cv_text }}</p>
+            <a href="{{ url_for('application', action='edit') }}" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+    {% else %}
+    <a href="{{ url_for('application', action='create') }}" class="btn btn-primary">Create Application</a>
+    {% endif %}
+
+</body>
+
+</html>

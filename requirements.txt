@@ -1,0 +1,6 @@
+Flask
+markdown
+SQLAlchemy
+torch==2.2.1
+transformers==4.38.2
+openai==1.13.3
